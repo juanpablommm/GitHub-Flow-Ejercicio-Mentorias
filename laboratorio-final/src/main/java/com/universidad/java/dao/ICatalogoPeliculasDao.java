@@ -14,13 +14,13 @@ public interface ICatalogoPeliculasDao {
      implentar un metodo para sbaer si exite el documento, cuando ya 
      tenemos el metodo exists() de la clase File*/
     
-    public List<Pelicula> listar(String patname) throws LecturaDatosException;
+    public List<Pelicula> listar(String pathName) throws LecturaDatosException;
     
-    public void escribir(Pelicula pelicula, String patName) throws EscrituraDatosException;
+    public void escribir(Pelicula pelicula, String pathName) throws EscrituraDatosException;
     
-    public String busar(String patName, String buscar) throws LecturaDatosException;
+    public String busar(String pathName, String buscar) throws LecturaDatosException;
     
-    public void crear(String patName) throws AccesoDatosException;
+    public void crear(String pathName) throws AccesoDatosException;
     
-    public void borrar(String patName);
+    public void borrar(String pathName);
 }

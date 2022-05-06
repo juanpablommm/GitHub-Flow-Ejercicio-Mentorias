@@ -20,10 +20,10 @@ public class CatalogoPeliculasServiceImpl implements ICatalogoPeliculasService{
     }
 
     @Override
-    public List<Pelicula> listarPeliculas(String patname){
+    public List<Pelicula> listarPeliculas(String pathName){
         List<Pelicula> list = new ArrayList<>();
         try {
-            list = peliculasDao.listar(patname);
+            list = peliculasDao.listar(pathName);
         } catch (LecturaDatosException e) {
             System.err.println(e);
         }
@@ -31,20 +31,20 @@ public class CatalogoPeliculasServiceImpl implements ICatalogoPeliculasService{
     }
 
     @Override
-    public void agregarPelicula(String nombre, String patName){
+    public void agregarPelicula(String nombre, String pathName){
         Pelicula pelicula2 = new Pelicula(nombre);
         try {
-            peliculasDao.escribir(pelicula2, patName);
+            peliculasDao.escribir(pelicula2, pathName);
         } catch (EscrituraDatosException e) {
             System.err.println(e);
         }
     }
 
     @Override
-    public String busarPelicula(String patName, String buscar){
+    public String busarPelicula(String pathName, String buscar){
         String pelicula = null;
         try {
-            pelicula = peliculasDao.busar(patName, buscar);
+            pelicula = peliculasDao.busar(pathName, buscar);
         } catch (LecturaDatosException e) {
             System.err.println(e);
         }
@@ -52,9 +52,9 @@ public class CatalogoPeliculasServiceImpl implements ICatalogoPeliculasService{
     }
 
     @Override
-    public void iniciarArchivo(String patName){
+    public void iniciarArchivo(String pathName){
         try {
-            peliculasDao.crear(patName);
+            peliculasDao.crear(pathName);
         } catch (AccesoDatosException e) {
             System.err.println(e);
         }

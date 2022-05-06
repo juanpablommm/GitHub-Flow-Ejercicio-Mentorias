@@ -17,8 +17,8 @@ import com.universidad.java.exceptions.LecturaDatosException;
 
 public class CatalogoPeliculasDaoImpl implements ICatalogoPeliculasDao {
 
-    public List<Pelicula> listar(String patname) throws LecturaDatosException {
-        File file = new File(patname);
+    public List<Pelicula> listar(String pathName) throws LecturaDatosException {
+        File file = new File(pathName);
         List<Pelicula> list = new ArrayList<>();
         if (file.exists()) {
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
@@ -37,8 +37,8 @@ public class CatalogoPeliculasDaoImpl implements ICatalogoPeliculasDao {
         return list;
     }
 
-    public void escribir(Pelicula pelicula, String patName) throws EscrituraDatosException {
-        File file = new File(patName);
+    public void escribir(Pelicula pelicula, String pathName) throws EscrituraDatosException {
+        File file = new File(pathName);
         if (file.exists()) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true))) {
                 bufferedWriter.write(pelicula.toString());
@@ -50,8 +50,8 @@ public class CatalogoPeliculasDaoImpl implements ICatalogoPeliculasDao {
         }
     }
 
-    public String busar(String patName, String buscar) throws LecturaDatosException {
-        File file = new File(patName);
+    public String busar(String pathName, String buscar) throws LecturaDatosException {
+        File file = new File(pathName);
         if (file.exists()) {
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
                 String line = bufferedReader.readLine();
@@ -69,22 +69,22 @@ public class CatalogoPeliculasDaoImpl implements ICatalogoPeliculasDao {
         return null;
     }
 
-    public void crear(String patName) throws AccesoDatosException {
-        File file = new File(patName);
+    public void crear(String pathName) throws AccesoDatosException {
+        File file = new File(pathName);
         if (!file.exists()) {
             try {
                 file.createNewFile();
-                System.out.println("Se creao la cartelera de peliculas en: " + patName);
+                System.out.println("Se creao la cartelera de peliculas en: " + pathName);
             } catch (IOException e) {
-                throw new AccesoDatosException("No se pudo crear el archivo " + patName, e);
+                throw new AccesoDatosException("No se pudo crear el archivo " + pathName, e);
             }
         } else {
-            System.out.println("No se puede crear, el archivo ya existe: " + patName);
+            System.out.println("No se puede crear, el archivo ya existe: " + pathName);
         }
     }
 
-    public void borrar(String patName) {
-        File file = new File(patName);
+    public void borrar(String pathName) {
+        File file = new File(pathName);
         if(file.exists()) {
             System.out.println((file.delete())?  "Se ha elimnado la cartelera " + file.getName():
                 "No se puedo elimnar " + file.getName());

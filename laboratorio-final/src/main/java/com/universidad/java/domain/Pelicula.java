@@ -5,7 +5,6 @@ public class Pelicula {
     private String nombre;
 
     public Pelicula(String nombre) {
-        super();
         this.nombre = nombre;
     }
     
